@@ -1,0 +1,11 @@
+{% extends "order/base.html" %}
+{% block content %}
+    {%for product in products%}
+    <article class="media content-section">
+      <div class="media-body">
+        <h2><a class="article-title" href="#">{{ product.Name }}</a></h2>
+        <p class="article-content">Product Price-{{ product.Price }}</p><p class="article-content">Product Total Quantity-{{ product.Quantity}}</p>
+      </div>
+    </article>
+    {%endfor%}
+{% endblock content %}

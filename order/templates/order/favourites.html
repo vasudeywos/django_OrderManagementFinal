@@ -1,0 +1,23 @@
+{% extends "order/base.html" %}
+{% block content %}
+    {%for or in new %}
+    <article class="media content-section">
+      <div class="media-body">
+          <div class="article-metadata">
+          <a class="mr-2" href="#"></a>
+        </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <a class="text-dark" href="{{or.get_absolute_url}}">
+                              <h2><a class="article-title" href="{% url 'post-detail' or.id %}">Order Number-{{ or.Order_Number }}</a></h2>
+                                <p class="article-content">Order Type-{{ or.Name }}</p><p class="article-content">Quantity-{{ or.Quantity}}</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <div id="favourite-section"><a href="{% url 'favourite_add' or.id %}"
+                                          class="btn btn-outline-primary">Remove</a></div>
+                              </div>
+                  </a>
+              </div>
+      </div>
+    </article>
+    {%endfor%}
+{% endblock content %}

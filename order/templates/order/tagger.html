@@ -1,0 +1,46 @@
+{% extends 'order/bases.html' %}
+
+
+{% block content %}
+
+<main role="main" class="container">
+        <div class="float:right;">
+          <div class="col">
+            <div class="row-md-4">
+                  <div class="content-section">
+                    <p class='text-muted'>
+                      <ul class="list-group">
+                        <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{% url 'post-create'%}">Add New Order</a></li>
+                        <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{% url 'order_pg'%}">Home</a></li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<div class="m-5">
+
+    <div class="flex items-center">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+            Tags-Search:
+            {% for tag in tags %}
+                <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out mr-1"> <a href="{% url 'posts_by_tag' tag.slug %}">{{ tag.name }}</a></button>
+            {% endfor %}
+        </div>
+      </div>
+
+    <br/>
+
+    {% for objt in ord %}
+        <a href="{% url 'post-detail' objt.id %}" class="block p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ objt.Name }}</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Order_Number: {{ objt.Order_Number }}</p>
+            <small>
+                {% for tag in objt.tags.all %}
+                    {{ tag }},
+                {% endfor %}
+            </small>
+        </a>
+    {% endfor %}
+{% endblock content %}

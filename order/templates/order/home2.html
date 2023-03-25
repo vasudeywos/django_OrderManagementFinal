@@ -1,0 +1,14 @@
+{% extends 'order/base2.html' %}
+
+{% block content %}
+        <div class="container pt-5">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Tags</label>
+                    <input type="text" data-role="tagsinput" class="form-control" name="tags">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+{% endblock content %}
